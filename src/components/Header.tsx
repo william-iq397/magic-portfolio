@@ -8,6 +8,7 @@ import styles from "@/components/Header.module.scss";
 
 import { routes, display } from "@/app/resources";
 import { person, home, about, blog, work, gallery } from "@/app/resources/content";
+import DevHouseLogo from "./DevHouseLogo";
 
 type TimeDisplayProps = {
   timeZone: string;
@@ -59,7 +60,7 @@ export const Header = () => {
         horizontal="center"
       >
         <Flex paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s">
-          {display.location && <Flex hide="s">{person.location}</Flex>}
+          {display.location && <Flex hide="s"><DevHouseLogo/></Flex>}
         </Flex>
         <Flex fillWidth horizontal="center">
           <Flex
