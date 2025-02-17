@@ -1,13 +1,9 @@
 import { InlineCode } from "@/once-ui/components";
 
 const person = {
-  firstName: "Selene",
-  lastName: "Yu",
-  get name() {
-    return `${this.firstName} ${this.lastName}`;
-  },
-  role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
+  name: "Dev House",
+  role: "Software Development Company",
+  avatar: "/images/avatar.png",
   location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
   languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
 };
@@ -52,18 +48,19 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Design engineer and builder</>,
+  headline: <>Dev House Portfolio</>,
   subline: (
     <>
-      I'm Selene, a design engineer at <InlineCode>FLY</InlineCode>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      We empower businesses to achieve growth through tailored digital marketing, 
+      cutting-edge IT solutions,
+      bespoke software development, and strategic business consulting
     </>
   ),
 };
 
 const about = {
   label: "About",
-  title: "About me",
+  title: "Our Work",
   description: `Meet ${person.name}, ${person.role} from ${person.location}`,
   tableOfContent: {
     display: true,
@@ -81,9 +78,11 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Dev House is a cutting-edge software development company based in Iraq/Basra,
+        but it has 4 branches in Iraq/Baghdad, Iraq/Erbil, Iraq/Basra and UAE/Dubai.
+        We specialize in building scalable digital solutions that blend innovation, <br/> <br/> 
+        functionality, and seamless user experience. Our expertise spans web and mobile development, <br/> <br/> 
+        custom software solutions, and the integration of emerging technologies to help businesses thrive in a digital world.
       </>
     ),
   },
