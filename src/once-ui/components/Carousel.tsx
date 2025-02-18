@@ -27,8 +27,27 @@ const Carousel: React.FC<CarouselProps> = ({
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [isTransitioning, setIsTransitioning] = useState(revealedByDefault);
   const [initialTransition, setInitialTransition] = useState(revealedByDefault);
+  const [isVisible, setIsVisible] = useState(false);
+  const carouselRef = useRef<HTMLDivElement>(null);
   const nextImageRef = useRef<HTMLImageElement | null>(null);
   const transitionTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.5 }
+    );
+
+    if (carouselRef.current) {
+      observer.observe(carouselRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   const preloadNextImage = (nextIndex: number) => {
     if (nextIndex >= 0 && nextIndex < images.length) {
@@ -57,7 +76,7 @@ const Carousel: React.FC<CarouselProps> = ({
           setIsTransitioning(true);
           transitionTimeoutRef.current = undefined;
         }, 300);
-      }, 800);
+      }, 200);
     }
   };
 
@@ -66,19 +85,36 @@ const Carousel: React.FC<CarouselProps> = ({
       setIsTransitioning(true);
       setInitialTransition(true);
     }
+
     return () => {
       if (transitionTimeoutRef.current) {
         clearTimeout(transitionTimeoutRef.current);
       }
     };
+
   }, [revealedByDefault, initialTransition]);
+
+  // Auto-play useEffect: only when component is visible
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const autoPlayInterval = setInterval(() => {
+      if (!transitionTimeoutRef.current && images.length > 1) {
+        handleImageClick();
+      }
+    }, 2400);
+
+    return () => {
+      clearInterval(autoPlayInterval);
+    };
+  }, [activeIndex, images, isVisible]);
 
   if (images.length === 0) {
     return null;
   }
 
   return (
-    <Flex fillWidth gap="12" direction="column" {...rest}>
+    <Flex ref={carouselRef} fillWidth gap="12" direction="column" {...rest}>
       <RevealFx
         onClick={handleImageClick}
         fillWidth
