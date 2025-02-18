@@ -1,4 +1,4 @@
-const baseURL = "demo.magic-portfolio.com";
+const baseURL = "localhost:3000";
 
 const routes = {
   "/": true,

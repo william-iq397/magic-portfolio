@@ -62,7 +62,7 @@ export default function Blog() {
         {blog.title}
       </Heading>
       <Column fillWidth flex={1}>
-        <Posts range={[1, 3]} thumbnail />
+        <Posts range={[1, 3]} thumbnail /> {/*change this to blogs number which is 4*/}
         <Posts range={[4]} columns="2" />
       </Column>
       {newsletter.display && <Mailchimp newsletter={newsletter} />}

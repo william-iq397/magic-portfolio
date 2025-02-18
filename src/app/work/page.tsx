@@ -1,3 +1,4 @@
+// to add more projects add .mdx files
 import { getPosts } from "@/app/utils/utils";
 import { Column } from "@/once-ui/components";
 import { Projects } from "@/components/work/Projects";

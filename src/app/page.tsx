@@ -7,6 +7,7 @@ import { baseURL, routes } from "@/app/resources";
 import { home, about, person, newsletter } from "@/app/resources/content";
 import { Mailchimp } from "@/components";
 import { Posts } from "@/components/blog/Posts";
+import { HomePageProjects } from "@/components/HomePageProjects";
 
 export async function generateMetadata() {
   const title = home.title;
@@ -97,8 +98,8 @@ export default function Home() {
           </RevealFx>
         </Column>
       </Column>
-      <RevealFx translateY="16" delay={0.2}>
-        <Projects range={[1, 1]} />
+      <RevealFx translateY="16" delay={0.1}>
+        <HomePageProjects range={[1, 1]} />
       </RevealFx>
       {routes["/blog"] && (
         <Flex fillWidth gap="24" mobileDirection="column">
