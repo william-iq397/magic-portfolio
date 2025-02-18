@@ -102,7 +102,7 @@ const Carousel: React.FC<CarouselProps> = ({
       if (!transitionTimeoutRef.current && images.length > 1) {
         handleImageClick();
       }
-    }, 2400);
+    }, 2000);
 
     return () => {
       clearInterval(autoPlayInterval);
